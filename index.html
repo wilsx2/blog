@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<p>My name is William Alan Conner. I'm an undergraduate student of Computer Science at University of Maryland, College Park. I like to lift weights and fold small paper boats.</p>
+<p>This is my blog.</p>
+
+<div>
+    {% for post in site.posts %}
+    {% unless post.draft == true or post.series %}
+    <div class="post-item">
+        <a class="post-name" href="{{ post.url }}"><span>{{ post.title }}</span></a>
+        <span class="post-date"><i>{{ post.date | date: '%B %-d, %Y' }}</i></span>
+    </div>
+    {% endunless %}
+    {% endfor %}
+</div>
