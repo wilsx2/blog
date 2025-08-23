@@ -4,7 +4,7 @@ title: My Awesome Code
 date: February 25th, 2025
 ---
 
-{% highlight c++ %}
+{% highlight cpp %}
     #include <iostream>
     #include <sstream>
     #include "HttpParser.h"
