@@ -99,22 +99,22 @@ div.page-content {
   line-height: 1.5;
   font-size: 22px;
   color: white;
-  font-family: "Latin Modern", serif;
+  font-family: "Latin Modern",  "Cambria Math", serif;
 }
 
 ul { list-style-type: square; }
 ol { list-style-type: upper-roman; }
 
 h1, h2, h3, h4, h5, h6 {
-  color: yellow;
-  font-family: "Manufacturing Consent", system-ui;
+  color: white;
+  font-family: "Latin Modern", system-ui;
+  font-weight: bold;
   font-style: normal;
-  font-weight: normal;
   line-height: 1.0;
   margin: 10px auto;
 }
-h1 { font-size: 60px; }
-h2 { font-size: 50px; }
+h1 { font-size: 50px; }
+h2 { font-size: 45px; }
 h3 { font-size: 40px; }
 h4 { font-size: 30px; }
 h5 { font-size: 25px; }
