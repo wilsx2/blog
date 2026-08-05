@@ -57,12 +57,6 @@ header span {
   font-family: "JetBrainsMono", sans-serif;
 }
 
-header span.name {
-  font-weight: bold;
-  color: black;
-  background-color: hotpink;
-}
-
 header span + span {
   margin-left: .25rem; /* add spacing between right-side items */
 }
