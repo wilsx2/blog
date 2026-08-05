@@ -20,6 +20,35 @@
 }
 
 @font-face {
+  font-family: "Latin Modern";
+  src:
+    url("../fonts/lmroman-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Latin Modern";
+  src:
+    url("../fonts/lmroman-bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Latin Modern";
+  src:
+    url("../fonts/lmroman-italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Latin Modern";
+  src:
+    url("../fonts/lmroman-bolditalic-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
   font-family: "JetBrainsMono";
   src: url("../fonts/JetBrainsMono.woff2");
   font-weight: normal;
@@ -68,9 +97,9 @@ div.page-content {
   max-width: 800px;
 
   line-height: 1.5;
-  font-size: 20px;
+  font-size: 22px;
   color: white;
-  font-family: "Georgia", serif;
+  font-family: "Latin Modern", serif;
 }
 
 ul { list-style-type: square; }
