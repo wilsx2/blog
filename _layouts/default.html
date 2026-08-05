@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{page.title}}</title>
         <link href="/assets/css/style.css" type="text/css" rel="stylesheet">
+        <script>document.documentElement.classList.add('js'); window.MathJax = { tex: { tags: "ams" }, chtml: { fontURL: "/assets/js/mathjax/es5/output/chtml/fonts/woff-v2/" }, startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.documentElement.classList.add('mathjax-ready')) } };</script>
+        <script async src="/assets/js/mathjax/es5/tex-chtml-full.js"></script>
+        <script>window.addEventListener('load', () => setTimeout(() => document.documentElement.classList.add('mathjax-ready'), 3000));</script>
     </head>
 
     <body>

@@ -58,7 +58,7 @@
 /* Page */
 
 body {
-  background-color: black;
+  background-color: #161714;
   margin:1em auto;
   max-width:80ch;
   padding:0 .62em;
@@ -127,6 +127,12 @@ img {
   margin: 10px 10px;
   max-width: calc(100% - 20px);
 }
+
+/* MathJax: keep raw TeX out of the layout until typeset, so it appears to be inserted */
+html.js .mathjax-inline,
+html.js .mathjax-block { display: none; }
+html.js.mathjax-ready .mathjax-inline { display: inline; }
+html.js.mathjax-ready .mathjax-block { display: block; }
 
 figure.highlight {
   overflow: scroll;
