@@ -6,8 +6,8 @@ date: August 5th, 2026
 
 <link href='document.css' rel='stylesheet' type='text/css' />
 
-<h3 class='sectionHead' id='introduction'><span class='titlemark'>1   </span>   <a id='x1-10001'></a>Introduction</h3>
-<!-- l. 23 --><p class='noindent'>Recently I read ”Fractal Programming in C” by Roger T. Stevens[<a id='x1-1001'></a><a id='page.3'></a><a href='document.html#X0-Stevens_1989'>6</a>]. Each
+   <h3 class='sectionHead' id='introduction'><span class='titlemark'>1   </span>   <a id='x1-10001'></a>Introduction</h3>
+<!-- l. 23 --><p class='noindent'>Recently I read ”Fractal Programming in C” by Roger T. Stevens[<a id='x1-1001'></a><a id='page.3'></a><a href='#X0-Stevens_1989'>6</a>]. Each
 chapter describes a different kind of fractal, including example source code
 to plot it. Stevens provides several full color prints of his favorites. These
 prints disproportionately feature incrementally more precise renders of the
@@ -100,7 +100,7 @@ had the same property. This follows naturally considering escape time is a discr
 value. To achieve smooth coloring, the continuous value of our orbit <span class='mathjax-inline'>\(z_n\)</span> must be used. It
 has been approximated that </p><div class='mathjax-block'>\[n_\text {cont} = n + 1 - \log _2\log _2|z_n|\]</div>
 <!-- l. 107 --><p class='indent'>   <span class='mathjax-inline'>\(n_{\textrm {cont}}\)</span> can be used to linearly interpolate between <span class='mathjax-inline'>\(f_v(\lfloor n_{\textrm {cont}} \rfloor )\)</span> and <span class='mathjax-inline'>\(f_v(\lceil n_{\textrm {cont}} \rceil )\)</span>. The derivation of <span class='mathjax-inline'>\(n_{\textrm {cont}}\)</span> is well
-explained by Dr. Linas Vepstas[<a id='x1-3001'></a><a id='page.10'></a><a href='document.html#X0-Vepstas_1997'>8</a>]. I have little to add to it so I will not summarize
+explained by Dr. Linas Vepstas[<a id='x1-3001'></a><a id='page.10'></a><a href='#X0-Vepstas_1997'>8</a>]. I have little to add to it so I will not summarize
 that explanation here.
 </p><!-- l. 108 --><p class='indent'>   Observe the differences between continuous and discrete coloring algorithms in
 Figure <a href='#period-1-cardioid-with-different-coloring-algorithms'>3<!-- tex4ht:ref: fig:coloring_algo  --></a>. </p><figure class='figure' id='x1-3004r3'><span id='period-1-cardioid-with-different-coloring-algorithms'></span> 
@@ -145,13 +145,13 @@ calculations.
 together, their difference has less meaningful precision”: </p><div class='mathjax-block'>\[ A = 123456798 \]</div>
    <div class='mathjax-block'>\[ B = 123456789 \]</div>
    <div class='mathjax-block'>\[ A - B = 9 \]</div>
-<!-- l. 134 --><p class='indent'>   [<a id='x1-6001'></a><a id='page.13'></a><a href='document.html#X0-Allen_2013_10'>4</a>]
+<!-- l. 134 --><p class='indent'>   [<a id='x1-6001'></a><a id='page.13'></a><a href='#X0-Allen_2013_10'>4</a>]
 </p><!-- l. 135 --><p class='indent'>   Perturbation theory relies on this fact. The idea is that one high precision orbit is
 stored as a reference. The escape time of nearby orbits is calculated using their
 differences from the reference orbit.
 </p><!-- l. 136 --><p class='indent'>   Let <span class='mathjax-inline'>\(Z\)</span> be the reference orbit. Let <span class='mathjax-inline'>\(C=Z_0\)</span>. Let <span class='mathjax-inline'>\(z\)</span> be another orbit with <span class='mathjax-inline'>\(c=z_0\)</span>. Let <span class='mathjax-inline'>\(\Delta z_n = z_n - Z_n\)</span>. K.I. Martin
 showed that from these definitions it can be derived: </p><div class='mathjax-block'>\[\Delta z_{n+1} = 2Z_n\Delta z_n+\Delta z_n^2 + \Delta c\]</div>
-<!-- l. 137 --><p class='indent'>   [<a id='x1-6002'></a><a href='document.html#X0-Martin_'>5</a>] Martin notes that ”all the numbers are ’small’, allowing it [perturbed orbits] to
+<!-- l. 137 --><p class='indent'>   [<a id='x1-6002'></a><a href='#X0-Martin_'>5</a>] Martin notes that ”all the numbers are ’small’, allowing it [perturbed orbits] to
 be calculated with hardware floating point numbers”. This is important
 because the reference orbit can be computed with arbitrary precision when
 necessary, while the speed of fixed precision can be leveraged for the bulk of
@@ -168,7 +168,7 @@ requires no additional reference calculations.
 </p><!-- l. 141 --><p class='indent'>   Rebasing is a technique to avoid glitches. The idea is that as we iterate <span class='mathjax-inline'>\(\Delta z\)</span>, if it
 drifts from the reference we restart the reference iteration and assign <span class='mathjax-inline'>\(z_n\)</span> to <span class='mathjax-inline'>\(\Delta z_n\)</span>. The
 validity of this method relies on multiplication of complex numbers representing a
-rotation[<a id='x1-7001'></a><a id='page.14'></a><a href='document.html#X0-Zhouran_'>9</a>]. A perturbed sequence using rebasing can be defined mathematically
+rotation[<a id='x1-7001'></a><a id='page.14'></a><a href='#X0-Zhouran_'>9</a>]. A perturbed sequence using rebasing can be defined mathematically
 likewise: </p><div class='mathjax-block'>\[\Delta z_{n+1} = 2Z_n\Delta z_n+\Delta z_n^2 + \Delta c\]</div>
    <div class='mathjax-block'>\[ \begin {aligned} \text {Let } z_n &amp;= \Delta z_n+Z_{m_n}, \qquad m_0=0, \\ z_{n+1} &amp;= 2Z_{m_n}\Delta z_n+\Delta z_n^2 + \Delta c + Z_{m_{n+1}}, \\ m_{n+1} &amp;= \begin {cases} m_n+1 &amp; \text {if } |z_n| \geq |\Delta z_n|\\ 0 &amp; \text {if } |z_n| &lt; |\Delta z_n| \end {cases} \end {aligned} \]</div>
    
@@ -194,7 +194,7 @@ match the other, multiplying its floating point component by <span class='mathja
 This multiplies the number of required operations substantially. However, this
 cost is preferable to the alternatives: being unable to render at all, using an
 inefficient and similarly expensive quad type, or using much slower arbitrary
-precision.[<a id='x1-8001'></a><a href='document.html#X0-UnknownFloatExp'>3</a>]
+precision.[<a id='x1-8001'></a><a href='#X0-UnknownFloatExp'>3</a>]
 
 </p>
    <h3 class='sectionHead' id='bivariate-linear-approximation'><span class='titlemark'>6   </span>   <a id='x1-90006'></a>Bivariate Linear Approximation</h3>
@@ -203,11 +203,11 @@ substantially faster. Taylor Series Approximations were once regarded as the bes
 option for this, but now consensus is that the bivariate linear approximation (BLA)
 is superior.
 </p><!-- l. 159 --><p class='indent'>   Recall the perturbation formula: </p><div class='mathjax-block'>\[ \Delta z_{n+1} = 2Z_n\Delta z_n + \Delta z_n^2 + \Delta c \]</div>
-<!-- l. 162 --><p class='indent'>   [<a id='x1-9001'></a><a id='page.15'></a><a href='document.html#X0-Thompson_2023'>7</a>] BLA takes advantage of the fact that if <span class='mathjax-inline'>\(\Delta z_n^2\)</span> is small enough it will have no effect
+<!-- l. 162 --><p class='indent'>   [<a id='x1-9001'></a><a id='page.15'></a><a href='#X0-Thompson_2023'>7</a>] BLA takes advantage of the fact that if <span class='mathjax-inline'>\(\Delta z_n^2\)</span> is small enough it will have no effect
 on <span class='mathjax-inline'>\(\Delta z_{n+1}\)</span> and we can instead write the linear equation: </p><div class='mathjax-block'>\[ \Delta z_{n+1} = 2Z_n\Delta z_n + \Delta c \]</div>
 <!-- l. 167 --><p class='indent'>   Because this equation is linear, we can combine many iterations into one
 computation: </p><div class='mathjax-block'>\[ \begin {aligned} \Delta z_n &amp;= A_l\Delta z_m + B_l\Delta c, \quad n = m + l, \\ \text {where } A_l &amp;= 2l\Delta Z_m,\\ B_l &amp;= l \\ \end {aligned} \]</div>
-<!-- l. 174 --><p class='indent'>   [<a href='document.html#X0-Thompson_2023'>7</a>]
+<!-- l. 174 --><p class='indent'>   [<a href='#X0-Thompson_2023'>7</a>]
 </p><!-- l. 175 --><p class='indent'>   Determining if we can use a given BLA to skip from <span class='mathjax-inline'>\(m\)</span> to <span class='mathjax-inline'>\(n\)</span> is a matter of
 determining if the squared term <span class='mathjax-inline'>\(\Delta z_n^2\)</span> is ”small enough” to ignore. ”Smallness” is relative
 to the other terms of the equation. Thus, it can be said some BLA is valid if
@@ -219,7 +219,7 @@ possible. Both sides can be divided by <span class='mathjax-inline'>\(\Delta z_n
 <!-- l. 191 --><p class='indent'>   Since </p><div class='mathjax-block'>\[ \Delta z_n = A_l\Delta z_m + B_l\Delta c \]</div>
 <!-- l. 195 --><p class='indent'>   We can substitute </p><div class='mathjax-block'>\[ |A_l\Delta z_m + B_l\Delta c| &lt; \varepsilon |Z_n| \]</div>
 <!-- l. 199 --><p class='indent'>   And isolate <span class='mathjax-inline'>\(\Delta z_m\)</span> </p><div class='mathjax-block'>\[ |\Delta z_m| &lt; \left |\frac {\varepsilon |Z_n| - B_l\Delta c}{A_l}\right | \]</div>
-<!-- l. 202 --><p class='indent'>   [<a href='document.html#X0-Thompson_2023'>7</a>] Note that every value on the right side of the equation other than <span class='mathjax-inline'>\(\Delta c\)</span> is
+<!-- l. 202 --><p class='indent'>   [<a href='#X0-Thompson_2023'>7</a>] Note that every value on the right side of the equation other than <span class='mathjax-inline'>\(\Delta c\)</span> is
 independent of the orbit for which the BLA’s validity is being checked. If the
 maximum possible value for <span class='mathjax-inline'>\(\Delta c\)</span> is used, the right side of the equation can be computed
 once for all validity checks of which there may be several trillion in a render. Let
@@ -230,14 +230,14 @@ of <span class='mathjax-inline'>\(l\)</span>. However, that would mean calculati
 complexity that likely does not amortize its cost. There is an alternative approach
 which is faster and retains most coverage. First, all single iteration BLAs are
 computed. Then, each sequential pair is combined following Claude’s BLA merging
-formulas[<a id='x1-9002'></a><a href='document.html#X0-Allen_2024'>2</a>]. Repeat until no longer possible. This creates a binary tree of BLAs in <span class='mathjax-inline'>\(O(n)\)</span>
+formulas[<a id='x1-9002'></a><a href='#X0-Allen_2024'>2</a>]. Repeat until no longer possible. This creates a binary tree of BLAs in <span class='mathjax-inline'>\(O(n)\)</span>
 time complexity.
 </p><!-- l. 209 --><p class='indent'>   Faster escape time computations can be performed using BLAs. Each iteration,
 check the BLAs with <span class='mathjax-inline'>\(m=n\)</span>. If the lowest-level BLA is invalid, then no other BLA can be
 valid, and we continue with a normal perturbation iteration. Otherwise,
 search from the highest-level down for the first valid BLA, as it will allow the
 renderer to skip the most iterations. Repeat until the escape condition is
-met[<a href='document.html#X0-Thompson_2023'>7</a>].
+met[<a href='#X0-Thompson_2023'>7</a>].
 
 </p>
    <h3 class='sectionHead' id='zoom-video-rendering'><span class='titlemark'>7   </span>   <a id='x1-100007'></a>Zoom Video Rendering</h3>
@@ -398,7 +398,7 @@ render is complete. The cluster would have to share a filesystem over the
 network.
 </p><!-- l. 289 --><p class='indent'>   Distributed <span class='mathjax-inline'>\(\mathbb {M}\)</span> rendering is largely unexplored. Claude proposed a roadmap for
 distributed Mandelbrot set rendering in 2013, which, while interesting, went
-unimplemented[<a id='x1-15001'></a><a id='page.19'></a><a href='document.html#X0-Allen_2013_04'>1</a>]. While a pretty major shift in project goals and architecture, if I
+unimplemented[<a id='x1-15001'></a><a id='page.19'></a><a href='#X0-Allen_2013_04'>1</a>]. While a pretty major shift in project goals and architecture, if I
 am to pursue any further optimizations, it is this one. I encourage anyone else who is
 interested to attempt as well.
 </p>
@@ -411,14 +411,14 @@ computing any additional iterations. That means that if we select a periodic poi
 our reference <span class='mathjax-inline'>\(Z\)</span>, then we can abort early, but still have enough references for our pixel
 
 orbits. There are mathematical techniques we can apply to find a periodic orbit in <span class='mathjax-inline'>\(\mathbb {M}\)</span>
-bounded by some parameters[<a id='x1-16001'></a><a href='document.html#X0-Thompson_2023'>7</a>].
+bounded by some parameters[<a id='x1-16001'></a><a href='#X0-Thompson_2023'>7</a>].
    
 </p>
    <h3 class='sectionHead' id='references'>  <a id='x1-17000'></a>References</h3>
 <!-- l. 294 --><p class='noindent'>
     </p><dl class='thebibliography'><dt class='thebibliography' id='X0-Allen_2013_04'>
 [1]  </dt><dd class='thebibliography' id='bib-1'>
-    <!-- l. 294 --><p class='noindent'><a id='page.20'></a><a href='document.html' id='X0-'></a>Claude Heiland-Allen. <span class='cmti-10'>A roadmap for distributed Mandelbrot set rendering</span>.
+    <!-- l. 294 --><p class='noindent'><a id='page.20'></a><a href='#' id='X0-'></a>Claude Heiland-Allen. <span class='cmti-10'>A roadmap for distributed Mandelbrot set rendering</span>.
     Apr. 2013. <span class='cmcsc-10'><span class='small-caps'>url</span></span>: <a class='url' href='https://mathr.co.uk/blog/2013-04-28_a_roadmap_for_distributed_mandelbrot_set_rendering.html'><span class='cmtt-10'>https://mathr.co.uk/blog/2013-04-28_a_roadmap_for_distributed_mandelbrot_set_rendering.html</span></a>.
     </p></dd><dt class='thebibliography' id='X0-Allen_2024'>
 [2]  </dt><dd class='thebibliography' id='bib-2'>

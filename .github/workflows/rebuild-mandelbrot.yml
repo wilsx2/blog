@@ -1,0 +1,47 @@
+name: Rebuild Mandelbrot Post
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch/tag/SHA of wilsx2/mandelbrot to pull'
+        required: false
+        default: 'main'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/xu-cheng/texlive-full:latest
+    steps:
+      - name: Checkout blog
+        uses: actions/checkout@v4
+
+      - name: Checkout mandelbrot
+        uses: actions/checkout@v4
+        with:
+          repository: wilsx2/mandelbrot
+          ref: ${{ inputs.ref }}
+          path: mandelbrot
+
+      - name: Step 1 - pull sources from mandelbrot
+        run: ./scripts/pull-mandelbrot.sh mandelbrot
+
+      - name: Step 2 - build mathjax posts
+        run: ./scripts/build-mathjax-posts.sh
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- _posts; then
+            echo "No changes to _posts; skipping commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git add _posts
+          git commit -m "Rebuild mathjax posts from mandelbrot@${{ inputs.ref }}"
+          git push origin HEAD:master
