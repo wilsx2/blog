@@ -4,16 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{page.title}}</title>
-        <link href="/assets/css/style.css" type="text/css" rel="stylesheet">
-        <script>document.documentElement.classList.add('js'); window.MathJax = { tex: { tags: "ams" }, chtml: { fontURL: "/assets/js/mathjax/es5/output/chtml/fonts/woff-v2/" }, startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.documentElement.classList.add('mathjax-ready')) } };</script>
-        <script async src="/assets/js/mathjax/es5/tex-chtml-full.js"></script>
+        <link href="{{ '/assets/css/style.css' | relative_url }}" type="text/css" rel="stylesheet">
+        <script>document.documentElement.classList.add('js'); window.MathJax = { tex: { tags: "ams" }, chtml: { fontURL: "{{ '/assets/js/mathjax/es5/output/chtml/fonts/woff-v2/' | relative_url }}" }, startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.documentElement.classList.add('mathjax-ready')) } };</script>
+        <script async src="{{ '/assets/js/mathjax/es5/tex-chtml-full.js' | relative_url }}"></script>
         <script>window.addEventListener('load', () => setTimeout(() => document.documentElement.classList.add('mathjax-ready'), 3000));</script>
     </head>
 
     <body>
         <header>
             <span >
-                <span><a href="/index.html">home</a></span>
+                <span><a href="{{ '/index.html' | relative_url }}">home</a></span>
                 <span><a href="https://github.com/wilsx2">github</a></span>
                 <span><a href="https://www.linkedin.com/in/williamaconner/">linkedin</a></span>
                 <span><a href="mailto:wconner1@terpmail.umd.com">email</a></span>
