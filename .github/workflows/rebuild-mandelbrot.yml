@@ -4,12 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: 'Branch/tag/SHA of wilsx2/mandelbrot to pull'
+        description: 'Branch/tag/SHA of wilsx2/wacfrac to pull'
         required: false
         default: 'main'
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   rebuild:
@@ -23,7 +24,7 @@ jobs:
       - name: Checkout mandelbrot
         uses: actions/checkout@v4
         with:
-          repository: wilsx2/mandelbrot
+          repository: wilsx2/wacfrac
           ref: ${{ inputs.ref }}
           path: mandelbrot
 
@@ -34,8 +35,10 @@ jobs:
         run: ./scripts/build-mathjax-posts.sh
 
       - name: Commit and push if changed
+        id: push
         run: |
           if git diff --quiet -- _posts; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No changes to _posts; skipping commit"
             exit 0
           fi
@@ -45,3 +48,15 @@ jobs:
           git add _posts
           git commit -m "Rebuild mathjax posts from mandelbrot@${{ inputs.ref }}"
           git push origin HEAD:master
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # A push made with GITHUB_TOKEN does not fire on:push workflows, so
+      # dispatch the Pages deploy explicitly (workflow_dispatch is exempt).
+      - name: Trigger Pages deploy
+        if: steps.push.outputs.changed == 'true'
+        run: |
+          curl -sS -X POST \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/pages.yml/dispatches" \
+            -d '{"ref":"master"}'
