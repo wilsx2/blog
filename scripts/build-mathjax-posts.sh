@@ -123,6 +123,12 @@ build_post() {
   mv "$post_html.tmp" "$post_html"
 
   cp "$scratch/$base.css" "$post_dir/$base.css"
+
+  # TeX4ht themes the page with the OS "Canvas" color, which fights the site's
+  # dark background (style.css loads before this stylesheet). Drop it so the
+  # post inherits the site's page styling.
+  sed -i '/background-color: Canvas;/d' "$post_dir/$base.css"
+
   prune_artifacts "$post_dir"
 
   echo "==> wrote $post_html"
