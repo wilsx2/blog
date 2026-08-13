@@ -29,14 +29,23 @@ jobs:
           path: mandelbrot
 
       - name: Step 1 - pull sources from mandelbrot
+        working-directory: ${{ github.workspace }}
         run: ./scripts/pull-mandelbrot.sh mandelbrot
 
       - name: Step 2 - build mathjax posts
+        working-directory: ${{ github.workspace }}
         run: ./scripts/build-mathjax-posts.sh
 
       - name: Commit and push if changed
         id: push
+        shell: bash
+        working-directory: ${{ github.workspace }}
         run: |
+          set -euo pipefail
+          echo "pwd=$(pwd)"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          echo "toplevel=$(git rev-parse --show-toplevel 2>&1)"
+          echo "gitdir=$(git rev-parse --git-dir 2>&1)"
           if git diff --quiet -- _posts; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No changes to _posts; skipping commit"
