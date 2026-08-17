@@ -105,6 +105,7 @@ build_post() {
   sed -i \
     -e "s/href='document\.html#/href='#/g" \
     -e "s/href='document\.html'/href='#'/g" \
+    -e 's/<!-- tex4ht:ref: [^ ]* *-->//g' \
     "$frag"
 
   local front
